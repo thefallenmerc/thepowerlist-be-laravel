@@ -20,3 +20,10 @@ Route::post('register', 'AuthController@register');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('auth:api')->group(function() {
+    Route::get('tasklist', 'TaskListController@today');
+    Route::get('tasklist/all', 'TaskListController@all');
+    Route::post('tasklist', 'TaskListController@store');
+    Route::put('tasklist/{id}', 'TaskListController@update');
+});

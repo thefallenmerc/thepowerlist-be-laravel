@@ -9,11 +9,6 @@ use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
     public function test_if_user_can_register()
     {
         $this->withoutExceptionHandling();
@@ -42,7 +37,7 @@ class AuthenticationTest extends TestCase
         $user = create(\App\User::class);
 
         $response = $this->get('/api/user', createHeaders($user));
-        
+
         $response->assertStatus(200);
         $response->assertJsonFragment(['email' => $user->email]);
     }
